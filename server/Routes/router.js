@@ -11,7 +11,7 @@ const {
 const warrantyController = require("../controller/user/warrantyController");
 const upload = multer({ storage: multer.memoryStorage() });
 const multerConfig = require("../middleware/multerMiddleware");
-const { protect , authorize} = require("../middleware/authMiddleware"); // Using your existing protect middleware
+const { protect , authorize} = require("../middleware/authMiddleware"); 
 const adminMiddleware = require('../middleware/adminMiddleware')
 const notificationController = require("../controller/user/notificationContoller");
 const aiController = require("../controller/user/aiController");
@@ -45,11 +45,10 @@ router.get("/warranty/:id", protect, warrantyController.getSingleWarranty);
 // --- ADMIN ROUTES  ---
 // Stats for the Dashboard Cards
 // Change these lines in your router.js
-// Use "/admin/stats" instead of just "/stats"
+
 
 router.get("/admin/stats", protect, adminMiddleware, adminController.getAdminStats);
 
-// Add this one back for your User Management table
 router.get("/admin/users", protect, adminMiddleware, adminController.getAllUsers);
 
 router.delete("/admin/user/delete/:id", protect, adminMiddleware, adminController.deleteUser);
