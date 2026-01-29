@@ -1,5 +1,5 @@
 import { commonAPI } from "./CommonApi";
-const SERVER_URL = "http://localhost:5000";
+const SERVER_URL = "https://proofly-ai-1.onrender.com";
 
 // Register API
 export const registerAPI = async (user) => {
