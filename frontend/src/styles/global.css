@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+/* minimal clean styling */
+:root {
+    --blue: #1d4ed8;
+    --muted: #6b7280;
+    --bg: #f6f8fb
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: Inter, system-ui, Arial, sans-serif;
+    margin: 0;
+    background: var(--bg);
+    color: #111
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #fff;
+    border-bottom: 1px solid #eee
+}
+
+.brand {
+    font-weight: 700;
+    color: var(--blue);
+    text-decoration: none
+}
+
+.btn {
+    background: var(--blue);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer
+}
+
+.btn.outline {
+    background: #fff;
+    color: var(--blue);
+    border: 1px solid var(--blue)
+}
+
+.btn.small {
+    padding: 6px 8px;
+    font-size: 13px
+}
+
+.role-badge {
+    margin-right: 8px;
+    color: var(--muted)
+}
+
+.page .content {
+    display: flex;
+    gap: 18px;
+    max-width: 1200px;
+    margin: 18px auto;
+    padding: 0 12px
+}
+
+.sidebar {
+    width: 220px;
+    background: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+
+.sidebar a {
+    color: #111;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 6px
+}
+
+.main {
+    flex: 1;
+    min-height: 60vh
+}
+
+.footer {
+    text-align: center;
+    padding: 18px;
+    color: var(--muted)
+}
+
+.auth-card {
+    max-width: 420px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06)
+}
+
+.auth-form input,
+.auth-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px
+}
+
+.card {
+    background: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #eee
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px
+}
+
+.loader {
+    padding: 12px;
+    text-align: center
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    margin-bottom: 8px
+}
+
+.chartbox {
+    background: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    text-align: center
+}
