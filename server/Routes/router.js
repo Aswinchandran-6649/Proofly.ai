@@ -31,10 +31,10 @@ router.get('/notifications/:userId', protect, notificationController.getUserNoti
 router.put('/notifications/read/:userId', protect, notificationController.markAsRead);
 router.delete('/notifications/clear/:userId', protect, notificationController.clearNotifications);
 
-// --- AI SCANNING (Protected - Fixed this for you!) ---
+// --- AI SCANNING  ---
 router.post("/scan-receipt", protect, upload.single("receipt"), aiController.scanReceiptController);
 
-// --- WARRANTY ROUTES (All Protected) ---
+// --- WARRANTY ROUTES  ---
 router.post("/save-warranty", protect, multerConfig.single("receiptImage"), warrantyController.saveWarranty);
 router.get("/warranties/:userId", protect, warrantyController.getUserWarranties);
 router.delete("/warranty/delete/:id", protect, warrantyController.deleteWarranty);
@@ -43,8 +43,7 @@ router.put("/warranty/extend/:id", protect, warrantyController.extendWarranty);
 router.get("/warranty/:id", protect, warrantyController.getSingleWarranty);
 
 // --- ADMIN ROUTES  ---
-// Stats for the Dashboard Cards
-// Change these lines in your router.js
+
 
 
 router.get("/admin/stats", protect, adminMiddleware, adminController.getAdminStats);
@@ -58,7 +57,6 @@ router.get("/admin/user-growth", protect, adminMiddleware, adminController.getUs
 
 // admin seller-side//
 
-// Get all sellers (for the table)
 router.get("/admin/all-sellers", protect, adminMiddleware, adminController.getAllSellers);
 
 //  seller verification status (Approve/Reject)
