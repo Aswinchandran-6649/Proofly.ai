@@ -10,7 +10,15 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://proofly-ai.vercel.app"
+  ],
+  methods: ["GET","POST","PUT","DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 //expiration checking 
 startExpirationCheck();
