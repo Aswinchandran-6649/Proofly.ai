@@ -3,7 +3,7 @@ import { X, CreditCard, ShieldPlus, Loader2 } from 'lucide-react';
 
 const ExtensionModal = ({ isOpen, onClose, onConfirm, productName }) => {
   const [months, setMonths] = useState(12);
-  const [loading, setLoading] = useState(false); // New loading state
+  const [loading, setLoading] = useState(false); 
   
   const price = months === 12 ? 49 : 29;
 
@@ -12,14 +12,14 @@ const ExtensionModal = ({ isOpen, onClose, onConfirm, productName }) => {
   const handlePayClick = async () => {
     setLoading(true);
     try {
-      // Call the onConfirm function passed from WarrantyDetails
+
       await onConfirm(months, price);
     } finally {
       setLoading(false);
     }
   };
 
-  // Handle product name display if it's an array
+
   const displayName = Array.isArray(productName) ? productName[0] : productName;
 
   return (

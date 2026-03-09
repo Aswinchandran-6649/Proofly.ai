@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import { Mail, Phone, User, Lock, Camera, Save, X } from "lucide-react";
 import { toast } from "react-toastify";
 import { updateProfileAPI } from "../../services/allApi";
-import { AuthContext } from "../../context/AuthContext"; // Import Context
+import { AuthContext } from "../../context/AuthContext"; 
 
 const SERVER_URL = "http://localhost:5000";
 
 const Profile = () => {
-  const { user, updateUser } = useContext(AuthContext); // Get global user and update function
+  const { user, updateUser } = useContext(AuthContext); 
   const [isEdit, setIsEdit] = useState(false);
   const [userData, setUserData] = useState({
     username: "", 
@@ -20,7 +20,7 @@ const Profile = () => {
   const [preview, setPreview] = useState("");
 
   useEffect(() => {
-    // Pull fresh data from context/localStorage on load or mode switch
+   
     const storedUser = localStorage.getItem("user"); 
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
@@ -46,7 +46,7 @@ const Profile = () => {
         if(password !== confirmPassword) return toast.error("Passwords do not match!");
     }
 
-    // Confirmation Modal
+    
     const confirmSave = window.confirm("Are you sure you want to save these changes?");
     if (!confirmSave) return;
 
@@ -70,7 +70,7 @@ const Profile = () => {
         if (result.status === 200) {
           toast.success("Profile Updated Successfully");
           
-          // CRITICAL: Update global context so Navbar changes immediately
+         
           updateUser(result.data); 
           
           setIsEdit(false);

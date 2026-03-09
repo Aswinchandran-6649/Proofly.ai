@@ -62,10 +62,10 @@ const WarrantyDetails = () => {
     try {
       const doc = new jsPDF();
       
-      // The QR code remains the Warranty ID for the scanner
+      
       const qrData = warranty._id; 
 
-      // Header Design
+      
       doc.setFillColor(15, 23, 42); 
       doc.rect(0, 0, 210, 40, 'F');
       doc.setFontSize(24);
@@ -78,12 +78,11 @@ const WarrantyDetails = () => {
         ? warranty.productName.join(", ") 
         : warranty?.productName || "Product";
 
-      // Warranty Data Table - Added "User ID" for fast searching
       autoTable(doc, {
         startY: 50,
         head: [['Field', 'Information']],
         body: [
-          // NEW ROW: Highlighting the User ID for the seller's search bar
+        
           ["CUSTOMER USER ID", warranty.userId?._id || warranty.userId || "N/A"], 
           ["Product Name", productNameStr],
           ["Retailer", warranty.storeName],
@@ -95,11 +94,11 @@ const WarrantyDetails = () => {
         ],
         theme: 'grid',
         headStyles: { fillColor: [37, 99, 235], fontSize: 11 },
-        // Custom styling for the User ID row to make it stand out
+        
         didParseCell: function (data) {
           if (data.row.index === 0 && data.section === 'body') {
             data.cell.styles.fontStyle = 'bold';
-            data.cell.styles.textColor = [37, 99, 235]; // Match header blue
+            data.cell.styles.textColor = [37, 99, 235]; 
           }
         }
       });

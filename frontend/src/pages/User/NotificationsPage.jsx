@@ -31,7 +31,7 @@ const NotificationsPage = () => {
                     // Mark as read after state is set
                     await markAsReadAPI(activeUser._id, reqHeader);
                     
-                    // Trigger Navbar refresh (matching your Navbar's event listener)
+                    // Trigger Navbar refresh
                     window.dispatchEvent(new Event("refreshNotifications"));
                 }
             } catch (err) {
@@ -76,7 +76,7 @@ const NotificationsPage = () => {
                 iconBg: "bg-red-500/10 text-red-500"
             };
         } else {
-            // Default: Expiry or General Alerts
+           
             return {
                 icon: <AlertTriangle size={20} />,
                 color: "border-rose-500/20",

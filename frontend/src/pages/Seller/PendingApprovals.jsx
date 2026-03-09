@@ -34,7 +34,6 @@ const PendingApprovals = () => {
 
   useEffect(() => { fetchWarranties(); }, []);
 
-  // 2. Filter Logic (Checks Username and User ID) - YOUR EXACT LOGIC
   const filteredList = pendingList.filter((item) => {
     const userId = (item.userId?._id || item.userId || "").toLowerCase();
     const username = (item.userId?.username || item.username || "").toLowerCase();
@@ -49,25 +48,25 @@ const PendingApprovals = () => {
     toast.success("ID copied to clipboard");
   };
 
-  // SCANNER LOGIC - Optimized for raw ID and URL compatibility
+  
   useEffect(() => {
     let scanner = null;
     if (isScannerOpen) {
-      // Delay ensures the <div id="reader"> is rendered before scanner starts
+      
       const timeoutId = setTimeout(() => {
-        // Increased box size slightly for better mobile scanning
+       
         scanner = new Html5QrcodeScanner("reader", { 
           fps: 10, 
           qrbox: { width: 250, height: 250 } 
         });
         
         const onScanSuccess = (decodedText) => {
-          // 1. Extract the ID: If it's a URL, take the last part; otherwise, take the text
+         
           const scannedId = decodedText.trim().includes('/') 
             ? decodedText.split('/').pop() 
             : decodedText.trim();
 
-          // 2. Find the match in the local pending list
+       
           const matchedPending = pendingList.find(item => 
             item._id === scannedId || 
             item.serialNumber === scannedId ||
@@ -75,14 +74,14 @@ const PendingApprovals = () => {
           );
 
           if (matchedPending) {
-            // 3. Clear scanner and open the Review Modal
+           
             scanner.clear().then(() => {
               setIsScannerOpen(false);
               setViewItem(matchedPending);
               toast.success("Warranty match found!");
             }).catch(err => {
               console.error("Scanner clear error:", err);
-              // Fallback if clear fails
+           
               setIsScannerOpen(false);
               setViewItem(matchedPending);
             });
@@ -92,7 +91,7 @@ const PendingApprovals = () => {
         };
 
         scanner.render(onScanSuccess, (error) => {
-          // Optional: handle scan errors silently to avoid console spam
+      
         });
       }, 300);
 
@@ -124,7 +123,7 @@ const PendingApprovals = () => {
   };
 
   return (
-    // Added pt-28 to create space for your Navbar
+    
     <div className="min-h-screen bg-gray-50 p-4 lg:p-10 pt-28">
       <div className="max-w-6xl mx-auto">
         

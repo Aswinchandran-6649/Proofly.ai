@@ -90,7 +90,7 @@ const AppRoutes = () => {
     <BrowserRouter>
       <LayoutWrapper>
         <Routes>
-          {/* PUBLIC ROUTES - Anyone can see these */}
+       
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
@@ -98,7 +98,7 @@ const AppRoutes = () => {
           <Route path="/features" element={<Features />} />
           <Route path="/working" element={<Working />} />
 
-          {/* USER MODULE - Protected (Only Role: 'user') */}
+        
           <Route element={<ProtectedRoute allowedRole="user" />}>
             <Route path="/user" element={<UserLayout />}>
               <Route index element={<Dashboard />} />
@@ -111,7 +111,7 @@ const AppRoutes = () => {
             </Route>
           </Route>
 
-          {/* SELLER MODULE - Protected (Only Role: 'seller') */}
+         
           <Route element={<ProtectedRoute allowedRole="seller" />}>
             <Route path="/seller" element={<SellerLayout />}>
               <Route index element={<SellerDashboard />} />

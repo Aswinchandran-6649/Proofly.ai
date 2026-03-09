@@ -40,7 +40,7 @@ const UploadReceipt = () => {
 
   const handleCapture = async (e) => {
     const file = e.target.files[0];
-    const token = localStorage.getItem("token"); // Get token for scanning
+    const token = localStorage.getItem("token"); 
 
     if (!token) {
       toast.error("Please login to scan receipts");
@@ -57,7 +57,7 @@ const UploadReceipt = () => {
       const data = new FormData();
       data.append("receipt", file);
 
-      // FIX: Added Authorization to the scanning header
+      // Authorization to the scanning header
       const reqHeader = { 
         "Content-Type": "multipart/form-data",
         "Authorization": `Bearer ${token}`
@@ -98,7 +98,7 @@ const UploadReceipt = () => {
       return;
     }
 
-    // Basic Validation to prevent 400 Bad Request
+   
     if (!formData.storeName || !formData.purchaseDate || !formData.totalAmount) {
       toast.error("Please fill in Merchant, Date, and Amount");
       return;
@@ -110,12 +110,10 @@ const UploadReceipt = () => {
     saveFormData.append("totalAmount", formData.totalAmount);
     saveFormData.append("warrantyExpiryDate", formData.expiryDate);
     saveFormData.append("serialNumber", formData.serialNumber); 
-    // userId is no longer strictly required in Body if backend uses token, 
-    // but we keep it here as your backend destructured it from req.body
+
     saveFormData.append("userId", userData._id);
 
-    // FIX: Properly handle product name string-to-array conversion
-    // This ensures 'productName' matches what your backend expects
+
     if (formData.productName) {
       const productArray = typeof formData.productName === 'string' 
         ? formData.productName.split(",").map(item => item.trim()).filter(i => i !== "")
@@ -139,14 +137,14 @@ const UploadReceipt = () => {
 
     try {
       const result = await saveWarrantyAPI(saveFormData, reqHeader);
-      // Backend returns 201 for successful creation
+    
       if (result.status === 201 || result.status === 200) {
         toast.success("Warranty Secured in Vault!");
         navigate('/user/dashboard'); 
       }
     } catch (err) {
       console.error("Save error:", err.response?.data);
-      // Display the specific validation error from your backend
+      
       const errorMessage = err.response?.data?.details || err.response?.data?.error || "Failed to save to database";
       toast.error(errorMessage);
     }

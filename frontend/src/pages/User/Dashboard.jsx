@@ -113,7 +113,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {allWarranties.length > 0 ? (
             allWarranties.map((item) => {
-              // Calculate status for each warranty
+              
               const expiry = new Date(item.warrantyExpiryDate);
               const today = new Date();
               let status = "safe";
@@ -121,7 +121,7 @@ const Dashboard = () => {
               else if ((expiry - today) / (1000 * 60 * 60 * 24) < 30)
                 status = "near";
 
-              // Inside allWarranties.map((item) => { ... })
+              
               return (
                 <Warranty
                   key={item._id}
@@ -138,7 +138,7 @@ const Dashboard = () => {
                       year: "numeric",
                     }
                   )}
-                  purchaseDate={item.purchaseDate} // Pass this for the calculation
+                  purchaseDate={item.purchaseDate} 
                   status={status}
                 />
               );
@@ -159,7 +159,7 @@ const Dashboard = () => {
   );
 };
 
-// ... Keep your KPI and Warranty sub-components exactly as they were ...
+
 
 const KPI = ({ title, value, icon, theme }) => {
   const styles = {
